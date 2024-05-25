@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.exceptions import ValidationError
 
 
@@ -12,4 +14,12 @@ def validate_email(value: str) -> str:
     domain = value.split('@')[-1]
     if domain not in allowed_domains:
         raise ValidationError(f'Email domain must be one of the following: {", ".join(allowed_domains)}')
+    return value
+
+
+def validate_birth_date(value: str) -> str:
+    try:
+        datetime.datetime.strptime(value, '%d-%m-%Y')
+    except ValueError:
+        raise ValidationError('Birth date must be in the format DD-MM-YYYY')
     return value

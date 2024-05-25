@@ -3,12 +3,13 @@ from typing import Dict, Any
 from rest_framework import serializers
 
 from users.models import User
-from users.validators import validate_email, validate_password
+from users.validators import validate_email, validate_password, validate_birth_date
 
 
 class UserSerializer(serializers.ModelSerializer):
-    password: serializers.CharField = serializers.CharField(write_only=True, validators=[validate_password])
-    email: serializers.EmailField = serializers.EmailField(validators=[validate_email])
+    password = serializers.CharField(write_only=True, validators=[validate_password])
+    email = serializers.EmailField(validators=[validate_email])
+    birth_date = serializers.DateField(format="%d-%m-%Y", input_formats=["%d-%m-%Y"], validators=[validate_birth_date])
 
     class Meta:
         model = User

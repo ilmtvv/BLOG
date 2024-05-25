@@ -1,12 +1,11 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from posts.views import PostViewSet
+from comments.views import CommentViewSet
 
 router = DefaultRouter()
-router.register(r'posts', PostViewSet)
+router.register(r'posts', CommentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('comments/', include('comments.urls')),
     ]
