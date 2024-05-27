@@ -9,6 +9,7 @@ class Command(BaseCommand):
         admin = User.objects.create(
             username='admin',
             email='admin@yandex.ru',
+            birth_date='2000-01-01',
             is_staff=True,
             is_superuser=True
         )

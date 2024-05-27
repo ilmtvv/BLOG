@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from django.core.exceptions import ValidationError
 
@@ -19,7 +19,7 @@ def validate_email(value: str) -> str:
 
 def validate_birth_date(value: str) -> str:
     try:
-        datetime.datetime.strptime(value, '%d-%m-%Y')
+        value.strftime('%Y-%m-%d')
     except ValueError:
-        raise ValidationError('Birth date must be in the format DD-MM-YYYY')
+        raise ValidationError('Birth date must be in the format YYYY-MM-DD')
     return value

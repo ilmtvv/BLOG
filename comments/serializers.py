@@ -1,10 +1,11 @@
 from rest_framework import serializers
 
 from comments.models import Comment
+from users.models import User
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    author: serializers.PrimaryKeyRelatedField = serializers.PrimaryKeyRelatedField(queryset=CustomUser.objects.all())
+    author: serializers.PrimaryKeyRelatedField = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = Comment

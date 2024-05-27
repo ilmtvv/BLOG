@@ -8,9 +8,9 @@ from users.models import User
 
 def validate_author_age(author_birth_date: str) -> None:
     try:
-        birth_date = datetime.datetime.strptime(author_birth_date, '%d-%m-%Y').date()
+        birth_date = datetime.datetime.strptime(author_birth_date, '%Y-%m-%d').date()
     except ValueError:
-        raise ValidationError('Birth date must be in the format DD-MM-YYYY')
+        raise ValidationError('Birth date must be in the format YYYY-MM-DD')
 
     if (datetime.date.today() - birth_date).days < 18 * 365:
         raise ValidationError('Author must be at least 18 years old.')

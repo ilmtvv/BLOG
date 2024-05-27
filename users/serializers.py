@@ -9,7 +9,7 @@ from users.validators import validate_email, validate_password, validate_birth_d
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, validators=[validate_password])
     email = serializers.EmailField(validators=[validate_email])
-    birth_date = serializers.DateField(format="%d-%m-%Y", input_formats=["%d-%m-%Y"], validators=[validate_birth_date])
+    birth_date = serializers.DateField(format="%Y-%m-%d", input_formats=["%Y-%m-%d"], validators=[validate_birth_date])
 
     class Meta:
         model = User

@@ -8,3 +8,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options) -> None:
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
         print(get_random_string(50, chars))
+
+chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+print(get_random_string(50, chars))

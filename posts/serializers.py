@@ -15,5 +15,5 @@ class PostSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         author = data.get('author')
-        validate_author_age(author.birth_date.strftime('%d-%m-%Y'))
+        validate_author_age(author.birth_date.strftime('%Y-%m-%d'))
         return data

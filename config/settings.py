@@ -47,6 +47,8 @@ INSTALLED_APPS = [
 
     'users',
     'posts',
+    'comments',
+    'drf_yasg',
 
 ]
 
@@ -87,9 +89,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER_postgres'),
-        'PASSWORD': os.getenv('PASSWORD'),
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+
     }
 }
 
@@ -176,3 +180,6 @@ SIMPLE_JWT = {
 
 # auth
 AUTH_USER_MODEL = 'users.User'
+
+# urls
+APPEND_SLASH=False
